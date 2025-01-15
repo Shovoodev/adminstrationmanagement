@@ -1,101 +1,152 @@
+import { cn } from "@/lib/utils";
+import MaxWidthWrapper from "./components/MaxWidthWrapper";
+import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import { ArrowRight, Book, Target } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
+import { features } from "../../data/features";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <MaxWidthWrapper
+        className={cn(`min-h-cal(100vh-4rem) overflow-hidden bg-secondary/50`)}
+      >
+        <section
+          className={cn(
+            " flex items-center ",
+            "min-h-[cal(100vh-4rem)]",
+            "relative",
+            "py-10"
+          )}
+        >
+          <div
+            className={cn(
+              " absolute top-0 right-0",
+              "w-2/3",
+              "h-full",
+              "bg-background transform",
+              "skew-x-12",
+              "translate-x-32",
+              "z-0",
+              "hidden mb:block"
+            )}
+          />
+          <div className=" relative z-10">
+            <div className=" flex flex-col md:flex-row items-center gap-8 md:gap-12">
+              <div className="md:w-1/2 space-y-6 md:space-y-8 text-center md:text-left">
+                <Badge
+                  variant={"outline"}
+                  className={cn(
+                    "border-primary/20 bg-primary/10 hover:bg-primary/20",
+                    "text-foreground"
+                  )}
+                >
+                  Track Your University adminstration
+                </Badge>
+                <h1
+                  className={cn(
+                    "text-4xl md:text-5xl lg:text-7xl font-bold leading-tight ",
+                    "text-foreground"
+                  )}
+                >
+                  University management{" "}
+                  <span className="relative ml-2">
+                    {" "}
+                    <span className=" relative z-10"> System</span>
+                    <span
+                      className={cn(
+                        " absolute bottom-2 left-0",
+                        "w-full h-3 md:h-4 -rotate-2 bg-primary/20"
+                      )}
+                    />
+                  </span>
+                </h1>
+                <p className=" text-lg md:text-xl text-muted-foreground">
+                  {" "}
+                  free management app for you university adminstartive works{" "}
+                </p>
+                <div className=" flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                  <Link
+                    href="/register"
+                    className={buttonVariants({
+                      size: "lg",
+                      className: "w-full sm:w-auto gap-2",
+                    })}
+                  >
+                    Get started <ArrowRight className=" w-4 h-4" />
+                  </Link>
+                  <Link
+                    href="/about"
+                    className={buttonVariants({
+                      variant: "outline",
+                      className: "w-full sm:w-auto gap-2",
+                    })}
+                  >
+                    Learn about Us <Book className=" w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+              <div className=" md:w-1/2 relative w-full max-w-lg mx-auto">
+                <div className=" relative w-full aspect-square">
+                  <div className=" absolute inset-0 bg-gradient-to-t from-primary/20 to-secondary/20 rounded-lg blur-2xl" />
+                  <div className=" relative bg-background rounded-lg border shadow-2xl overflow-hidden">
+                    <Image
+                      src="/hero.jpg"
+                      width={800}
+                      priority
+                      height={800}
+                      className=" object-cover w-full h-full"
+                      alt="this is an image"
+                    />
+                  </div>
+                  <div className=" absolute inset-0 bg-gradient-to-t from-background/20 to-background/0 " />
+                </div>
+              </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+              <div className=" absolute -top-4 -right-4 bg-background rounded-lg border p-4 shadow-lg hidden sm:block">
+                <div className=" flex items-center gap-3">
+                  <div className=" w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Target className="w-4 h-4 text-primary" />
+                  </div>
+                  <div className="space-y-o.5">
+                    <div className=" text-sm font-medium">
+                      <p className=" text-sm font-medium">Admin management</p>
+                      <p className=" text-xs text-muted-foreground">
+                        manage your student as n administrator
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className=" absolute -bottom-72 -left-60 bg-background rounded-lg border p-4 shadow-lg hidden sm:block">
+                  <div className=" flex items-center gap-3">
+                    <div className=" w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Target className="w-4 h-4 text-primary" />
+                    </div>
+                    <div className="space-y-o.5">
+                      <div className=" text-sm font-medium">
+                        <p className=" text-sm font-medium">Leason organizer</p>
+                        <p className=" text-xs text-muted-foreground">
+                          manage your teacher for better lesson experience
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </MaxWidthWrapper>
+
+      <section id="features" className=" py-16  md:py-20 bg-background">
+        <MaxWidthWrapper>
+          <div>
+            <div className=" text-center"></div>
+          </div>
+        </MaxWidthWrapper>
+      </section>
+    </>
   );
 }
