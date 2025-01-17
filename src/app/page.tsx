@@ -143,7 +143,48 @@ export default function Home() {
       <section id="features" className=" py-16  md:py-20 bg-background">
         <MaxWidthWrapper>
           <div>
-            <div className=" text-center"></div>
+            <div className=" text-center space-y-4 mb-12 md:mb-16">
+              <h2 className=" text-2xl mb:text-3xl lg:text-5xl font-bold">
+                university administration management
+              </h2>
+              <p className=" text-2xl mb:text-3xl lg:text-5xl text-muted-foreground font-bold">
+                Everything you need to manage your university management
+              </p>
+            </div>
+            <div className=" grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {features?.map((feature, index) => (
+                <div
+                  className={cn(
+                    "p-6 rounded-lg",
+                    "border border-border",
+                    "bg-card hover:bg-accent",
+                    "transition-colors duration-300",
+                    "group"
+                  )}
+                  key={index}
+                >
+                  <div className=" space-y-4">
+                    <div
+                      className={cn(
+                        "w-12 h-12 ",
+                        "rounded-lg",
+                        "bg-primary/20 group-hover:bg-primary/20",
+                        "flex items-center justify-center",
+                        "transition-colors duration-200"
+                      )}
+                    >
+                      <feature.icon className="w-6 h-6" />
+                    </div>
+                    <h3 className=" text-lg md:text-xl font-semibold">
+                      {feature.title}
+                    </h3>
+                    <p className=" text-muted-foreground">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </MaxWidthWrapper>
       </section>
